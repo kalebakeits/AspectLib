@@ -1,21 +1,20 @@
 # AspectLib
 
-A **no-config** C# library of aspects using [MrAdvice](https://github.com/arxLabs/MrAdvice) with the goal of replacing repetitive code with simple attributes.
-Built as a free alternative to existing AOP frameworks where existing tooling is quite expensive or not a easy to integrate into solutions.
+A **no-config** C# library of aspects using [MrAdvice](https://github.com/arxLabs/MrAdvice) to replace repetitive code with simple attributes.  
+Built as a free alternative to existing AOP frameworks where tooling is often expensive or awkward to integrate into modern solutions.
 
+This library simplifies cross-cutting concerns like caching without needing to wire up or manage infrastructure code manually. Designed to drop cleanly into .NET applications with minimal setup.
 
 ## 📦 Installation
 
-To use this package:
-
-1. Clone this repository or add it via a local project reference.
-2. Install the required dependency [MrAdvice](https://github.com/arxLabs/MrAdvice):
+Install the package via NuGet:
 
 ```
-dotnet add package MrAdvice
+dotnet add package AspectLib --version 1.0.0-pre-release
 ```
 
-This package depends on MrAdvice for method interception and build-time weaving functionality.
+**Note:**  
+This package includes [MrAdvice](https://github.com/arxLabs/MrAdvice) as a dependency and automatically enables method interception and build-time weaving when your project builds.
 
 ## 🚀 Usage
 
@@ -28,9 +27,6 @@ public async Task<int> ExampleMethod()
     // method body
 }
 ```
-
-**Note:**  
-Ensure your project is properly wired to use MrAdvice. Refer to [MrAdvice documentation](https://github.com/arxLabs/MrAdvice) for setup instructions.
 
 ## 📖 Example
 
@@ -47,7 +43,7 @@ When this method is called, the attribute logic will be invoked according to its
 ## 📖 Features
 
 **Implemented:**
-- **[Cache]** — wraps the call to a method with a cache.
+- **[Cache]** — Wraps a method call with a cache. If the cache is a hit, it is returned directly without invoking the methdo. Otherwise, the method is invoked and the result is stored in the cache.
 
 **Planned:**
 - Logging Aspect  
@@ -56,8 +52,8 @@ When this method is called, the attribute logic will be invoked according to its
 
 ## 📦 Requirements & Compatibility
 
-- Requires [MrAdvice](https://github.com/arxLabs/MrAdvice) for method interception.
-- Tested on .NET 8.0. Other versions untested.
+- Requires .NET 8.0 (other versions untested)
+- Method interception powered by MrAdvice (included automatically)
 
 ## 📅 Project Status
 

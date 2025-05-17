@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspectLib", "AspectLib\Aspe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspectLib.UnitTest", "AspectLib.UnitTest\AspectLib.UnitTest.csproj", "{B78D682F-7B17-45C0-8B21-254D3C18DE5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspectLib.Weaving.UnitTest", "AspectLib.Weaving.UnitTest\AspectLib.Weaving.UnitTest.csproj", "{D6122B9E-B9DF-413F-A4EE-40904FDB2C8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,5 +28,9 @@ Global
 		{B78D682F-7B17-45C0-8B21-254D3C18DE5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B78D682F-7B17-45C0-8B21-254D3C18DE5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B78D682F-7B17-45C0-8B21-254D3C18DE5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6122B9E-B9DF-413F-A4EE-40904FDB2C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6122B9E-B9DF-413F-A4EE-40904FDB2C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6122B9E-B9DF-413F-A4EE-40904FDB2C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6122B9E-B9DF-413F-A4EE-40904FDB2C8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
