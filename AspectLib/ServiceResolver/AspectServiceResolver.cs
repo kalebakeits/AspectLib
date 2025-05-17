@@ -8,7 +8,7 @@ public static class AspectServiceResolver
     /// <summary>
     /// Gets or sets the current <see cref="IServiceResolver"/> instance.
     /// </summary>
-    public static IServiceResolver Resolver { get; set; } = new ServiceResolver();
+    public static IServiceResolver? Resolver { get; set; } = null;
 
     /// <summary>
     /// Resolves a service of type <typeparamref name="T"/>.
@@ -18,8 +18,11 @@ public static class AspectServiceResolver
     /// <exception cref="InvalidOperationException">Thrown when the service could not be resolved.</exception>
     public static T Resolve<T>()
         where T : class =>
-        Resolver.Resolve<T>()
+        Resolver?.Resolve<T>()
+        ?? DefaultResolver.Resolve<T>()
         ?? throw new InvalidOperationException(
             $"Could not resolve service for {typeof(T).FullName}."
         );
+
+    private static ServiceResolver DefaultResolver { get; } = new();
 }

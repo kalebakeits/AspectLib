@@ -5,12 +5,14 @@ Built as a free alternative to existing AOP frameworks where tooling is often ex
 
 This library simplifies cross-cutting concerns like caching without needing to wire up or manage infrastructure code manually. Designed to drop cleanly into .NET applications with minimal setup.
 
+For more information [**read the docs**](https://github.com/kalebakeits/AspectLib/wiki)
+
 ## 📦 Installation
 
 Install the package via NuGet:
 
 ```
-dotnet add package AspectLib --version 1.0.0-pre-release
+dotnet add package AspectLib --version 1.0.0-pre-release-1
 ```
 
 **Note:**  
@@ -26,11 +28,7 @@ public async Task<int> ExampleMethod()
 {
     // method body
 }
-```
 
-## 📖 Example
-
-```csharp
 [Cache]
 public static string ProcessData()
 {
@@ -43,7 +41,7 @@ When this method is called, the attribute logic will be invoked according to its
 ## 📖 Features
 
 **Implemented:**
-- **[Cache]** — Wraps a method call with a cache. If the cache is a hit, it is returned directly without invoking the methdo. Otherwise, the method is invoked and the result is stored in the cache.
+- [**[CacheAttribute]**](https://github.com/kalebakeits/AspectLib/wiki/CacheAttribute)
 
 **Planned:**
 - Logging Aspect  
@@ -61,9 +59,7 @@ Active development. Breaking changes expected until 1.0.
 
 ## ✅ Roadmap
 
-- Publish NuGet package  
 - Add Logging, Retry, Timeout aspects  
-- Set up CI/CD pipeline with build & test badge  
 - Write contribution guidelines & code style rules  
 
 ## 🤝 Contributing
