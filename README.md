@@ -1,6 +1,6 @@
 # AspectLib
 
-[![Build and Test](https://github.com/kalebakeits/AspectLib/actions/workflows/dotnet.yml/badge.svg)](https://github.com/kalebakeits/AspectLib/actions/workflows/dotnet.yml)
+[![Build and Test](https://github.com/kalebakeits/AspectLib/actions/workflows/test.yml/badge.svg)](https://github.com/kalebakeits/AspectLib/actions/workflows/test.yml)
 
 A **no-config** C# library of aspects using [MrAdvice](https://github.com/arxLabs/MrAdvice) to replace repetitive code with simple attributes.  
 Built as a free alternative to existing AOP frameworks where tooling is often expensive or awkward to integrate into modern solutions.

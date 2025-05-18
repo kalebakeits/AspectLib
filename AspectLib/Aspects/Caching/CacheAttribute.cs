@@ -11,11 +11,7 @@ using AspectLib.ServiceResolver;
 /// <summary>
 /// Caches the result of the method using the configured caching backend.
 /// </summary>
-[AttributeUsage(
-    AttributeTargets.Class | AttributeTargets.Method,
-    AllowMultiple = false,
-    Inherited = true
-)]
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
 public class CacheAttribute : Attribute, IMethodAsyncAdvice
 {
     private readonly string? cacheKeyTemplate;

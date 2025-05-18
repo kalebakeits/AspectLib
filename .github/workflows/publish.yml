@@ -1,0 +1,48 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      
+      - name: Build and Test
+        uses: ./.github/actions/dotnet-build-test
+
+      - name: Set package version
+        run: |
+          baseVersion=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' ./AspectLib/AspectLib.csproj | head -1)
+          ref=${GITHUB_REF#refs/heads/}
+
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            version=${GITHUB_REF#refs/tags/v}
+          elif [[ "$ref" == develop ]]; then
+            suffix="beta.$(date +'%d%m%y%H%M%S')"
+            version="$baseVersion-$suffix"
+          elif [[ "$ref" == release/v* ]]; then
+            suffix="rc.$(date +'%d%m%y%H%M%S')"
+            version="$baseVersion-$suffix"
+          else
+            suffix="alpha.$(date +'%d%m%y%H%M%S')"
+            version="$baseVersion-$suffix"
+          fi
+
+          sed -i "s|<Version>.*</Version>|<Version>$version</Version>|" ./AspectLib/AspectLib.csproj
+          echo "Set version to $version"
+        shell: bash
+
+      - name: Pack NuGet package
+        run: dotnet pack ./AspectLib/AspectLib.csproj --no-build --configuration Release --output .nupkgs
+
+      - name: Publish package to GitHub Packages
+        run: dotnet nuget push .nupkgs/*.nupkg --api-key ${{ secrets.ACTIONS_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
