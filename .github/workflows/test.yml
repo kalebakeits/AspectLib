@@ -1,0 +1,36 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, develop, release/* ]
+    tags:
+      - v*
+    paths:
+      - 'nuget.config'
+      - 'AspectLib/**'
+      - 'AspectLib.UnitTest/**'
+      - 'AspectLib.Weaving.UnitTest/**'
+      - '.github/**'
+  pull_request:
+    paths:
+      - 'nuget.config'
+      - 'AspectLib/**'
+      - 'AspectLib.UnitTest/**'
+      - 'AspectLib.Weaving.UnitTest/**'
+      - '.github/**'
+
+jobs:
+  build-test-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      
+      - name: Build and Test
+        uses: ./.github/actions/dotnet-build-test

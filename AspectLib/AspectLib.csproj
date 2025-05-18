@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <PackageId>AspectLib</PackageId>
-    <Version>1.0.0-alpha.1</Version>
+    <Version>1.0.0</Version>
     <Authors>Kaleba Keitshokile</Authors>
     <Description>A library of aspects to weave logic into methods at build time in .NET applications.</Description>
     <PackageTags>aspect; caching; AOP</PackageTags>

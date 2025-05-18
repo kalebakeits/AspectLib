@@ -1,0 +1,20 @@
+name: 'Dotnet Build and Test'
+description: 'Restore, build, and test a .NET solution'
+runs:
+  using: "composite"
+  steps:
+    - name: Create local packages folder
+      run: mkdir -p .nupkgs
+      shell: bash
+
+    - name: Restore dependencies
+      run: dotnet restore --configfile nuget.config
+      shell: bash
+
+    - name: Build solution
+      run: dotnet build --no-restore --configuration Release
+      shell: bash
+
+    - name: Run unit tests
+      run: dotnet test --no-build --configuration Release --verbosity normal
+      shell: bash
