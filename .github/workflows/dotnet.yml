@@ -31,7 +31,7 @@ jobs:
 
       - name: Generate version suffix
         id: version
-        run: echo "suffix=$(date +'%Y%m%d%H%M').$GITHUB_RUN_NUMBER" >> $GITHUB_ENV
+        run: echo "suffix=$(date +'%Y%m%d%H%M')" >> $GITHUB_ENV
 
       - name: Update project version
         run: |
