@@ -12,14 +12,21 @@
     <Authors>Kaleba Keitshokile</Authors>
     <Description>A library of aspects to weave logic into methods at build time in .NET applications.</Description>
     <PackageTags>aspect; caching; AOP</PackageTags>
-    <RepositoryUrl>https://github.com/kalebakeits/AspectLib</RepositoryUrl> <!-- optional but good practice -->
+    <RepositoryUrl>https://github.com/kalebakeits/AspectLib</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/kalebakeits/AspectLib</PackageProjectUrl> <!-- optional -->
+    <PackageProjectUrl>https://github.com/kalebakeits/AspectLib</PackageProjectUrl>
+
+    <!-- Add README file property -->
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.5" />
     <PackageReference Include="MrAdvice" Version="2.16.0" PrivateAssets="none"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
