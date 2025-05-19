@@ -2,6 +2,12 @@ name: Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      publishToNuGet:
+        description: 'Publish to NuGet.org (only if triggered on tag)'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   publish-package:
@@ -15,7 +21,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
-      
+
       - name: Build and Test
         uses: ./.github/actions/dotnet-build-test
 
@@ -44,5 +50,10 @@ jobs:
       - name: Pack NuGet package
         run: dotnet pack ./AspectLib/AspectLib.csproj --no-build --configuration Release --output .nupkgs
 
+      - name: Publish package to NuGet.org
+        if: ${{ github.event.inputs.publishToNuGet == 'true' && startsWith(github.ref, 'refs/tags/') }}
+        run: dotnet nuget push .nupkgs/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+
       - name: Publish package to GitHub Packages
+        if: ${{ !(github.event.inputs.publishToNuGet == 'true' && startsWith(github.ref, 'refs/tags/')) }}
         run: dotnet nuget push .nupkgs/*.nupkg --api-key ${{ secrets.ACTIONS_TOKEN }} --source https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json --skip-duplicate
