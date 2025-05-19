@@ -2,7 +2,7 @@
 
 [![Build and Test](https://github.com/kalebakeits/AspectLib/actions/workflows/test.yml/badge.svg)](https://github.com/kalebakeits/AspectLib/actions/workflows/test.yml)
 
-A **no-config**(still customisable) C# library of aspects using [MrAdvice](https://github.com/arxLabs/MrAdvice) to replace repetitive code with simple attributes. Built as a free alternative to existing AOP frameworks where tooling is often expensive or awkward to integrate into modern solutions.
+A **no-config**(still customisable) C# library of aspects using [MrAdvice](https://github.com/ArxOne/MrAdvice) to replace repetitive code with simple attributes. Built as a free alternative to existing AOP frameworks where tooling is often expensive or awkward to integrate into modern solutions.
 This library simplifies cross-cutting concerns like caching without needing to wire up or manage infrastructure code manually. Designed to drop cleanly into .NET applications with minimal setup.
 For more information [**read the docs**](https://github.com/kalebakeits/AspectLib/wiki)
 
@@ -14,7 +14,7 @@ dotnet add package AspectLib --version 1.0.0
 ```
 
 **Note:**  
-This package includes [MrAdvice](https://github.com/arxLabs/MrAdvice) as a dependency and automatically enables method interception and build-time weaving when your project builds.
+This package includes [MrAdvice](https://github.com/ArxOne/MrAdvice) as a dependency and automatically enables method interception and build-time weaving when your project builds.
 
 ## 🚀 Usage
 Once installed, you can apply the attribute to your methods like so:
